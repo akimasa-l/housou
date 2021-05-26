@@ -19,10 +19,11 @@ def get_url(data: dict):
     return "https://www.youtube.com/watch?v="+data["items"][0]["id"]["videoId"]
 
 
+def main():
+    data = search("キセキ GReeeeN")
+    print(json.dumps(data, indent=4))
+    print(get_url(data))
+
 
 if __name__ == "__main__":
-    def main():
-        data=search("キセキ GReeeeN")
-        print(json.dumps(data, indent=4))
-        print(get_url(data))
     main()
