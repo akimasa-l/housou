@@ -2,7 +2,7 @@ import json
 
 import requests
 
-with open("../../line/accesstoken.txt") as f:
+with open("../line/accesstoken.txt") as f:
     BearerToken = f.read().rstrip()
 
 
@@ -22,7 +22,7 @@ def sendmessage(to, content):
 
 
 def gettoto():
-    with open("../../line/dburl.txt") as f:
+    with open("../line/dburl.txt") as f:
         dburl = f.read().rstrip()
     a = requests.get(dburl)
     toto: list[str] = json.loads(a.text)

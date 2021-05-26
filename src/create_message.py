@@ -29,9 +29,9 @@ def get_search_keyword(raw_songs: list[str]) -> list[str]:
 
 def create_messages(raw_songs):
     songs = get_songs(raw_songs)
-    message = "本日お送りする曲は！"
+    message = "本日お送りする曲は！\n"
     for song, singer in songs:
-        message += f"{singer}の{song},"
+        message += f"{singer}の{song},\n"
     message += "です！"
     return [message]+get_search_keyword(raw_songs)
 
