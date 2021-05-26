@@ -27,7 +27,7 @@ def get_search_keyword(raw_songs: list[str]) -> list[str]:
     return [search_youtube.get_url(search_youtube.search(f"{song} {singer}")) for song, singer in get_songs(raw_songs)]
 
 
-def create_message(raw_songs):
+def create_messages(raw_songs):
     songs = get_songs(raw_songs)
     message = "本日お送りする曲は！"
     for song, singer in songs:
