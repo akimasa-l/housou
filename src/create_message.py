@@ -7,7 +7,7 @@ import search_youtube
 IS_DATE_FORMAT = re.compile(r"\d+/\d+", flags=re.ASCII)
 
 
-def get_message():
+def get_raw_songs():
     l = getlist.getlist()
     today = datetime.datetime.today()
     for i in l:
@@ -18,14 +18,27 @@ def get_message():
                 return i[2:]
 
 
-def get_search_keyword(message: list[str]) -> list[str]:
-    it = iter(message)
-    return [search_youtube.get_url(search_youtube.search(f"{i} {j}")) for i, j in zip(it, it)if i != "" and j != ""]
+def get_songs(raw_songs: list[str]):  # (曲名,歌手名)のtuple
+    it = iter(raw_songs)
+    return [(song, singer) for song, singer in zip(it, it)if song != "" and singer != ""]
+
+
+def get_search_keyword(raw_songs: list[str]) -> list[str]:
+    return [search_youtube.get_url(search_youtube.search(f"{song} {singer}")) for song, singer in get_songs(raw_songs)]
+
+
+def create_message(raw_songs):
+    songs = get_songs(raw_songs)
+    message = "本日お送りする曲は！"
+    for song, singer in songs:
+        message += f"{singer}の{song},"
+    message += "です！"
+    return [message]+get_search_keyword(raw_songs)
 
 
 def main():
-    message = get_message()
-    print(get_search_keyword(message))
+    raw_songs = get_raw_songs()
+    print(get_search_keyword(raw_songs))
 
 
 if __name__ == '__main__':
