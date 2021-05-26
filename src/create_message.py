@@ -11,10 +11,10 @@ def get_message():
     today = datetime.datetime.today()
     for i in l:
         if IS_DATE_FORMAT.fullmatch(i[1]):
-            print(i[1])
+            #print(i[1])
             date = datetime.datetime.strptime(i[1], "%m/%d")
             if today.day == date.day and today.month == date.month:
-                print(i[2:])
+                return i[2:]
 
 
 if __name__ == '__main__':
