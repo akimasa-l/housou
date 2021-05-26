@@ -20,7 +20,7 @@ def get_url(data: dict):
 
 
 def main():
-    data = search("キセキ GReeeeN")
+    data = search("校長GO")
     print(json.dumps(data, indent=4))
     print(get_url(data))
 
