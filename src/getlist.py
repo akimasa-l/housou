@@ -6,10 +6,10 @@ URL = "https://docs.google.com/spreadsheets/d/1lD3B1g7XZU4RDhw9KoZJY6-86NpAtPJqm
 
 def getlist() -> list[list[str]]:
     response = requests.get(URL)
-    print(response.encoding)
+    #print(response.encoding)
     response.encoding = "utf-8"
     text = response.text
     l = text.split("\r\n")
     ans = [i.split("\t")for i in l]
-    print(ans)
+    #print(ans)
     return ans
