@@ -33,7 +33,7 @@ def create_messages(raw_songs):
     for song, singer in songs:
         message += f"{singer}の{song},\n"
     message += "です！"
-    return [message]+get_search_keyword(raw_songs)
+    return get_search_keyword(raw_songs)+[message]
 
 
 def main():
